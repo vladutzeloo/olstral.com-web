@@ -72,6 +72,16 @@ if (statsRow) statObs.observe(statsRow);
 
 
 
+// ── GOOGLE MAP CLICK-TO-LOAD
+function loadMap() {
+  const frame = document.getElementById('mapFrame');
+  const placeholder = document.getElementById('mapPlaceholder');
+  if (!frame) return;
+  frame.src = 'https://maps.google.com/maps?q=Strada+Bucegi+3A,Brasov,Romania&output=embed&z=16';
+  frame.style.display = 'block';
+  if (placeholder) placeholder.style.display = 'none';
+}
+
 // ── MOBILE NAV
 function toggleMenu() {
   const ham = document.getElementById('hamburger');
