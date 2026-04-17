@@ -1,8 +1,30 @@
+const PAGE_TITLES = {
+  home:          'OLSTRAL – CNC Machining Excellence | Brașov, Romania',
+  company:       'Company | OLSTRAL HPT SRL',
+  about:         'About Us | OLSTRAL HPT SRL',
+  quality:       'Quality Assurance | OLSTRAL HPT SRL',
+  sectors:       'Industries | OLSTRAL HPT SRL',
+  aerospace:     'Aerospace CNC Machining | OLSTRAL HPT SRL',
+  hydraulics:    'Hydraulics Precision Parts | OLSTRAL HPT SRL',
+  machinebuilding:'Machine Building | OLSTRAL HPT SRL',
+  industrial:    'Industrial Applications | OLSTRAL HPT SRL',
+  automation:    'Automation | OLSTRAL HPT SRL',
+  automotive:    'Automotive Precision Parts | OLSTRAL HPT SRL',
+  technology:    'Technology & Capabilities | OLSTRAL HPT SRL',
+  machining:     'Complex Parts Machining | OLSTRAL HPT SRL',
+  grinding:      'High Accuracy Grinding | OLSTRAL HPT SRL',
+  measuring:     'Advanced Measuring | OLSTRAL HPT SRL',
+  careers:       'Careers | OLSTRAL HPT SRL',
+  contact:       'Contact Us | OLSTRAL HPT SRL',
+  privacy:       'Privacy Policy | OLSTRAL HPT SRL',
+};
+
 function showPage(id) {
   window.scrollTo(0, 0);
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const t = document.getElementById('page-' + id);
   if (t) t.classList.add('active');
+  if (PAGE_TITLES[id]) document.title = PAGE_TITLES[id];
   setTimeout(() => { initReveal(); updateFabs(); }, 50);
 }
 
@@ -49,6 +71,16 @@ if (statsRow) statObs.observe(statsRow);
 // Init on load
 
 
+
+// ── GOOGLE MAP CLICK-TO-LOAD
+function loadMap() {
+  const frame = document.getElementById('mapFrame');
+  const placeholder = document.getElementById('mapPlaceholder');
+  if (!frame) return;
+  frame.src = 'https://maps.google.com/maps?q=Strada+Bucegi+3A,Brasov,Romania&output=embed&z=16';
+  frame.style.display = 'block';
+  if (placeholder) placeholder.style.display = 'none';
+}
 
 // ── MOBILE NAV
 function toggleMenu() {
@@ -172,4 +204,6 @@ window.addEventListener('DOMContentLoaded', () => {
   updateFabs();
   const y = document.getElementById('copyright-year');
   if (y) y.textContent = new Date().getFullYear();
+  const pd = document.getElementById('privacy-date');
+  if (pd) pd.textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
 });
