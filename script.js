@@ -172,4 +172,6 @@ window.addEventListener('DOMContentLoaded', () => {
   updateFabs();
   const y = document.getElementById('copyright-year');
   if (y) y.textContent = new Date().getFullYear();
+  const pd = document.getElementById('privacy-date');
+  if (pd) pd.textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
 });
