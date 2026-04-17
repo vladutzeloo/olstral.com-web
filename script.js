@@ -1,8 +1,30 @@
+const PAGE_TITLES = {
+  home:          'OLSTRAL – CNC Machining Excellence | Brașov, Romania',
+  company:       'Company | OLSTRAL HPT SRL',
+  about:         'About Us | OLSTRAL HPT SRL',
+  quality:       'Quality Assurance | OLSTRAL HPT SRL',
+  sectors:       'Industries | OLSTRAL HPT SRL',
+  aerospace:     'Aerospace CNC Machining | OLSTRAL HPT SRL',
+  hydraulics:    'Hydraulics Precision Parts | OLSTRAL HPT SRL',
+  machinebuilding:'Machine Building | OLSTRAL HPT SRL',
+  industrial:    'Industrial Applications | OLSTRAL HPT SRL',
+  automation:    'Automation | OLSTRAL HPT SRL',
+  automotive:    'Automotive Precision Parts | OLSTRAL HPT SRL',
+  technology:    'Technology & Capabilities | OLSTRAL HPT SRL',
+  machining:     'Complex Parts Machining | OLSTRAL HPT SRL',
+  grinding:      'High Accuracy Grinding | OLSTRAL HPT SRL',
+  measuring:     'Advanced Measuring | OLSTRAL HPT SRL',
+  careers:       'Careers | OLSTRAL HPT SRL',
+  contact:       'Contact Us | OLSTRAL HPT SRL',
+  privacy:       'Privacy Policy | OLSTRAL HPT SRL',
+};
+
 function showPage(id) {
   window.scrollTo(0, 0);
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const t = document.getElementById('page-' + id);
   if (t) t.classList.add('active');
+  if (PAGE_TITLES[id]) document.title = PAGE_TITLES[id];
   setTimeout(() => { initReveal(); updateFabs(); }, 50);
 }
 

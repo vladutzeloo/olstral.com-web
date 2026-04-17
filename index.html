@@ -17,6 +17,41 @@
 <meta name="twitter:title" content="OLSTRAL – CNC Machining Excellence">
 <meta name="twitter:description" content="Precision CNC machining for aerospace, hydraulics, automotive and industrial sectors. ISO 9001:2015 · AS9100D certified.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23CC0000'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial' font-weight='900' font-size='20' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  "name": "OLSTRAL HPT SRL",
+  "alternateName": "OLSTRAL",
+  "url": "https://olstral.com",
+  "logo": "https://olstral.com/logo.png",
+  "image": "https://olstral.com/logo.png",
+  "description": "Precision CNC machining for aerospace, hydraulics, automotive and industrial sectors. ISO 9001:2015 and AS9100D certified. Based in Brașov, Romania.",
+  "email": "office@olstral.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "VGP Park Brașov – Hall A, Bucegi Street No. 3A",
+    "addressLocality": "Brașov",
+    "postalCode": "500053",
+    "addressCountry": "RO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.6427,
+    "longitude": 25.5887
+  },
+  "areaServed": "Worldwide",
+  "priceRange": "$$",
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 9001:2015" },
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "AS9100D" }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/olstral-hpt",
+    "https://www.facebook.com/olstral"
+  ]
+}
+</script>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="styles.css?v=1.0">
 </head>
@@ -65,7 +100,9 @@
 
 <div class="nav-mobile" id="mobileNav">
   <div class="nav-mobile-item">
-    <a href="#" onclick="toggleSub(this)">Company <i class="chevron">▾</i></a>
+    <a href="#" onclick="mobileGo('home')">Home</a>
+  </div>
+  <div class="nav-mobile-item">
     <div class="nav-mobile-sub">
       <a href="#" onclick="mobileGo('about')">About Us</a>
       <a href="#" onclick="mobileGo('quality')">Quality</a>
@@ -711,18 +748,36 @@
     <div class="content-section">
       <h2>Open <span>Positions</span></h2>
       <div class="job-card reveal">
-        <h3>Senior Quality Engineer</h3>
-        <p>We're seeking a Senior Quality Engineer to lead quality assurance in production. You'll manage quality control, audits, KPIs, and corrective actions while working with teams and stakeholders to ensure high standards. If you have strong analytical skills and industrial experience, join us!</p>
+        <div class="job-meta"><span class="job-tag">Customer Relations</span><span class="job-type">Full-Time · Brașov</span></div>
+        <h3>Call Center Agent</h3>
+        <p>Be the voice of OLSTRAL. You will handle inbound and outbound calls, respond to customer and partner enquiries, support our sales team with order follow-ups, and ensure every interaction reflects our commitment to quality and professionalism. Romanian and English required; additional languages are a plus.</p>
+        <ul class="feat-list" style="margin-top:12px;margin-bottom:24px;">
+          <li>Excellent verbal communication in Romanian &amp; English</li>
+          <li>Customer-service or call-centre experience preferred</li>
+          <li>Organized, detail-oriented, comfortable with CRM tools</li>
+        </ul>
         <a href="#" class="btn-red" onclick="showPage('contact')" style="font-size:12px;padding:12px 24px;">Apply Now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
       <div class="job-card reveal reveal-delay-1">
+        <div class="job-meta"><span class="job-tag">Production</span><span class="job-type">Full-Time · Brașov</span></div>
         <h3>CNC Operator</h3>
-        <p>We are seeking a skilled CNC Operator to set up, operate, and maintain CNC machines to produce high-quality parts according to specifications. The ideal candidate should have experience with reading technical drawings, adjusting machine settings, and ensuring precision in production. Responsibilities include monitoring machine performance, conducting quality checks, and troubleshooting issues during the production process.</p>
+        <p>Set up, operate, and monitor CNC machining centres to produce precision parts for aerospace, automotive, and hydraulics clients. You will read technical drawings, make in-process adjustments, perform quality checks, and keep accurate production records in our AS9100D-certified environment.</p>
+        <ul class="feat-list" style="margin-top:12px;margin-bottom:24px;">
+          <li>Experience operating CNC mills or turning centres</li>
+          <li>Ability to read and interpret technical drawings</li>
+          <li>Familiarity with measurement tools (calipers, micrometers)</li>
+        </ul>
         <a href="#" class="btn-red" onclick="showPage('contact')" style="font-size:12px;padding:12px 24px;">Apply Now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
       <div class="job-card reveal reveal-delay-2">
-        <h3>Tool &amp; Device Coordinator</h3>
-        <p>We are looking for a Tool and Device Coordinator to oversee the management, maintenance, and optimization of tools and devices used in production. You will ensure their availability, proper functioning, and calibration while collaborating with production and maintenance teams to support an efficient and high-quality process. Strong organizational and technical skills required.</p>
+        <div class="job-meta"><span class="job-tag">Maintenance</span><span class="job-type">Full-Time · Brașov</span></div>
+        <h3>Junior Electromechanic</h3>
+        <p>Support installation, preventive maintenance, and repair of CNC machines and production equipment alongside our senior engineering team. A great entry point into precision manufacturing — full on-the-job training provided. Technical high-school diploma in electromechanics or a related field required.</p>
+        <ul class="feat-list" style="margin-top:12px;margin-bottom:24px;">
+          <li>Technical education in electromechanics or electronics</li>
+          <li>Basic understanding of electrical and mechanical systems</li>
+          <li>Willingness to learn — no prior work experience necessary</li>
+        </ul>
         <a href="#" class="btn-red" onclick="showPage('contact')" style="font-size:12px;padding:12px 24px;">Apply Now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
