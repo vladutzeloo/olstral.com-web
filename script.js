@@ -3,7 +3,7 @@ function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const t = document.getElementById('page-' + id);
   if (t) t.classList.add('active');
-  setTimeout(() => initReveal(), 50);
+  setTimeout(() => { initReveal(); updateFabs(); }, 50);
 }
 
 document.querySelectorAll('a[onclick]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
@@ -156,9 +156,20 @@ document.addEventListener('touchend', e => {
 }, {passive:true});
 window.addEventListener('DOMContentLoaded', carouselSetup);
 
+// ── FLOATING ACTION BUTTONS ──────────────────────────────
+function updateFabs() {
+  const onHome = document.getElementById('page-home')?.classList.contains('active');
+  const fabHome = document.getElementById('fabHome');
+  const fabTop  = document.getElementById('fabTop');
+  if (fabHome) fabHome.classList.toggle('visible', !onHome);
+  if (fabTop)  fabTop.classList.toggle('visible', window.scrollY > 200);
+}
+window.addEventListener('scroll', updateFabs, {passive:true});
+
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(initReveal, 100);
   initRedLines();
+  updateFabs();
   const y = document.getElementById('copyright-year');
   if (y) y.textContent = new Date().getFullYear();
 });
