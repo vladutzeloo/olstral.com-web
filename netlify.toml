@@ -4,29 +4,44 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
+    # Prevent clickjacking — no iframes from any origin
+    X-Frame-Options = "DENY"
+
+    # Block MIME-type sniffing
     X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
+
+    # Never expose the referrer to third-party sites
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+    # Disable unused browser features
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=()"
+
+    # Enforce HTTPS for 2 years; include subdomains
+    # Add "; preload" and submit to hstspreload.org once the domain is stable
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+
+    # Content Security Policy
+    # script-src 'unsafe-inline' is required while onclick= attributes remain in HTML.
+    # Remove it once those are migrated to addEventListener (see script.js).
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
 
 [[headers]]
-  for = "*.html"
+  for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=3600, must-revalidate"
 
 [[headers]]
-  for = "*.css"
+  for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "*.js"
+  for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "*.{jpg,jpeg,png,gif,svg,webp,ico}"
+  for = "/*.{jpg,jpeg,png,gif,svg,webp,ico}"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
