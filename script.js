@@ -198,6 +198,23 @@ function updateFabs() {
 }
 window.addEventListener('scroll', updateFabs, {passive:true});
 
+/* FAQ accordion — one-at-a-time within a list */
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  if (!item) return;
+  const isOpen = item.classList.contains('open');
+  const list = item.parentElement;
+  if (list) list.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    const q = i.querySelector('.faq-q');
+    if (q) q.setAttribute('aria-expanded','false');
+  });
+  if (!isOpen){
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(initReveal, 100);
   initRedLines();
