@@ -17,7 +17,7 @@ Load these skills when working on this repo:
 ## Key Rules
 - This is a static site — no server-side code
 - Deployed via Netlify (see `netlify.toml`)
-- Keep all styles in `styles.css` using CSS custom properties (tokens)
+- Keep all styles in `styles.css` using CSS custom properties (tokens defined in `:root`)
 - No inline styles except for dynamic JS-driven values
 - Mobile-first responsive design
-- Maintain dark/light mode support
+- Single light theme — the site does not currently support dark mode

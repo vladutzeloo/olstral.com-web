@@ -25,108 +25,53 @@ Avoid startup-generic language and visuals. The design should suggest engineerin
 
 ## Color system
 
-```css
-:root, [data-theme="dark"] {
-  --color-bg: #0f1117;
-  --color-surface: #161b22;
-  --color-surface-2: #1c2230;
-  --color-surface-offset: #1a2035;
-  --color-border: #30363d;
-  --color-divider: #21262d;
-
-  --color-text: #e6edf3;
-  --color-text-muted: #8b949e;
-  --color-text-faint: #484f58;
-  --color-text-inverse: #0f1117;
-
-  --color-primary: #00b4d8;
-  --color-primary-hover: #0096b5;
-  --color-primary-active: #007a94;
-
-  --color-success: #3fb950;
-  --color-warning: #d29922;
-  --color-error: #f85149;
-
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
-
-  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
-  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.4);
-  --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.5);
-
-  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-[data-theme="light"] {
-  --color-bg: #f6f8fa;
-  --color-surface: #ffffff;
-  --color-surface-2: #f0f2f5;
-  --color-surface-offset: #eaedf0;
-  --color-border: #d0d7de;
-  --color-divider: #e5e8eb;
-
-  --color-text: #1f2328;
-  --color-text-muted: #636c76;
-  --color-text-faint: #adb5bd;
-  --color-text-inverse: #ffffff;
-
-  --color-primary: #0077a8;
-  --color-primary-hover: #005c82;
-  --color-primary-active: #004060;
-}
-```
-
-## Type scale
+The site uses a single light theme built around Olstral red as the brand accent. These are the existing tokens in `styles.css` — keep using them; do not introduce a parallel naming scheme.
 
 ```css
 :root {
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-  --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+  --red: #CC0000;
+  --red-dark: #990000;
+  --red-light: #ff1a1a;
+
+  --black: #0d0d0d;
+  --dark: #1a1a1a;
+  --white: #ffffff;
+  --off-white: #f8f8f8;
+  --light-gray: #f2f2f2;
+  --mid-gray: #e0e0e0;
+
+  --text: #1a1a1a;
+  --text-muted: #444444;
+  --text-light: #666666;
 }
 ```
 
 Rules:
-- Body text should usually be `--text-base`
-- Tiny labels can use `--text-xs`
-- Display sizes are for hero and section titles only
-- No text smaller than 12px
+- `--red` is the only brand accent — never introduce a second hue
+- Use `--red-dark` for hover and `--red-light` sparingly for emphasis
+- Surfaces alternate between `--white`, `--off-white`, and `--black` / `--dark` for inverted sections
+- No dark mode — do not add `prefers-color-scheme` or `[data-theme]` blocks
+
+## Type scale
+The current site uses fixed `px` sizes in `styles.css` rather than a clamp-based token scale. When extending the site:
+- Match the existing sizes used in nearby components rather than inventing new ones
+- Body copy is around 15–17px, hero displays go up to ~80px
+- Keep a strong size contrast between display headings and body text
+- Never use text smaller than 12px
+- Headings: `Barlow Condensed`, weight 700–900, often uppercase with letter-spacing
 
 ## Fonts
-Preferred pairing:
-- General Sans for headings and body
-- JetBrains Mono for metrics, codes, and precision values
+The site ships with locally-hosted Barlow:
+- `Barlow Condensed` for headings, eyebrows, labels, and uppercase UI elements
+- `Barlow` for body copy and form fields
 
-Example:
-```html
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-```
+Font files live in `fonts/`. Do not introduce additional families without removing one first — keep the typographic system tight.
 
 ## Spacing
-Use a 4px spacing system everywhere.
-
-```css
-:root {
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-24: 6rem;
-}
-```
+The site does not yet have spacing tokens — values are written directly in `styles.css`. When adding new spacing:
+- Stay on a 4px / 8px rhythm (4, 8, 12, 16, 24, 32, 48, 64, 96)
+- Match the spacing used by nearby sections so vertical rhythm stays consistent
+- Avoid one-off values like 13px or 27px
 
 ## Layout rules
 - Left-align body content by default
@@ -140,8 +85,9 @@ Use a 4px spacing system everywhere.
 ## Components
 
 ### Buttons
-- Primary buttons use solid `--color-primary`
+- Primary buttons use solid `--red`, hover to `--red-dark` (see `.btn-red`)
 - Never use gradient buttons
+- Outline buttons use a white or red border on inverted sections (see `.btn-outline-white`)
 - Ghost buttons use quiet borders and surface hover states
 
 ### Cards
@@ -164,7 +110,8 @@ Never do these:
 - thick colored side borders on cards
 - generic hero copy like "unlock the power of"
 - emoji as design elements
-- hardcoded spacing values when tokens exist
+- introducing a second brand color alongside `--red`
+- inventing parallel token names (e.g. `--color-primary`) instead of using the existing `--red*` / `--text*` tokens
 
 ## Accessibility
 Always check:
